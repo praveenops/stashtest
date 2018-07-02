@@ -1,0 +1,52 @@
+<nd-brand-bar *ngIf="isProd; else light"
+              no-hamburger-menu no-help no-search
+              [attr.page-title]="brandBar.title"
+              [attr.product-id]="productId"
+              [attr.app-icon-tooltip]="brandBar.tooltip"
+              (title-click)="onTitleClick()"
+              (sign-out-click)="onSignOutClick()">
+  <div slot="main" class="full-height">
+      <div class="mt-9" *ngIf="showSplashScreen">
+          <ion-help-message
+          [icon]="'ion:profiler'"
+          [primaryMessage]="'Coming Soon'">
+        </ion-help-message>
+      </div>
+    <router-outlet *ngIf="!showSplashScreen"></router-outlet>
+  </div>
+</nd-brand-bar>
+
+<ng-template #light>
+  <nd-brand-bar-light [attr.page-title]="brandBar.title"
+                      no-hamburger-menu
+                      [attr.app-icon-url]="brandBar.appIconUrl"
+                      [attr.app-icon-tooltip]="brandBar.tooltip"
+                      (title-click)="onTitleClick()">
+    <div slot="main" class="light-container">
+        <div class="mt-9" *ngIf="showSplashScreen">
+            <ion-help-message
+            [icon]="'ion:profiler'"
+            [primaryMessage]="'Coming Soon'">
+          </ion-help-message>
+        </div>
+      <router-outlet *ngIf="!showSplashScreen"></router-outlet>
+    </div>
+  </nd-brand-bar-light>
+</ng-template>
+
+<div class="timeout-popup-wrapper">
+  <nd-dialog class="timeout-popup m-0" #sessionTimedOut
+             modal
+             vertical-offset="100"
+             vertical-align="top"
+             horizontal-align="center"
+             scroll-action="lock"
+             with-backdrop
+             (iron-overlay-closed)="reloadTab()">
+    <h3>Logged Out</h3>
+    <p>Log back in to continue.</p>
+    <div class="buttons">
+      <nd-button dialog-confirm autofocus>Login</nd-button>
+    </div>
+  </nd-dialog>
+</div>

@@ -1,0 +1,28 @@
+<div class="filter mt-3">
+  <div class="header">
+    <input #flatSearch type="text" placeholder="Search" class="search-input px-4" autocomplete="off" ([ngModel])="searchText"
+      (keyup)="onSearch($event)">
+
+    <nd-checkbox accent (change)="changeSelectAll($event)" class="ml-4" [checked]="data.selectedAll">
+      Select All
+    </nd-checkbox>
+  </div>
+  <div class="items">
+    <div class="items-container">
+      <ng-container *ngFor="let item of items">
+        <div class="item" [ngClass]="{'checked': item.selected}" *ngIf="item.visible">
+          <nd-checkbox  accent (change)="checkChange($event, item)" [checked]="item.selected" class="pl-4 pr-4">
+            <ng-container *ngIf="item.shortLabel">            
+              <span class="item-name ellipsis full" [innerHTML]="item.label"></span>
+              <span class="item-name ellipsis short" [innerHTML]="item.shortLabel"></span>
+            </ng-container>
+            <ng-container *ngIf="!item.shortLabel">
+                <span class="item-name ellipsis" [innerHTML]="item.label"></span>
+              </ng-container>
+          </nd-checkbox>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+</div>

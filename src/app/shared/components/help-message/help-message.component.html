@@ -1,0 +1,9 @@
+<div class="help-message-container">
+  <div class="help-message" *ngIf="icon">
+    <nd-icon [icon]="icon" xx-large></nd-icon>
+  </div>
+  <h5 class="primary-message">{{primaryMessage}}</h5>
+  <p *ngIf="description" class="m-b-1" [innerHTML]="description"></p>
+  <nd-button *ngIf="secondaryMessage" flat class="secondary-message" (click)="navigateTo($event)">{{secondaryMessage}}</nd-button>
+  <ng-content select="[spinner-message]"></ng-content>
+</div>

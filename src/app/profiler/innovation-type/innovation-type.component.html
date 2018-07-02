@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div [ionViewSwitch]="dataState">
+    <div *ionViewResolving class="spinner-container">
+      <nd-spinner-lite active></nd-spinner-lite>
+    </div>
+    <ion-error *ionViewError [errorCode]="errorCode" action="Refresh" (onAction)="refreshContext()"></ion-error>
+    <!-- <div *ionViewResolved>
+      <div *ngIf="innovationType.data && innovationType.data.length > 0">
+        <div ion-v1-responsive class="innovationtype">
+          <svg ion-v1-xyplot [dataset]="innovationType.data" key="chipIndex" paddingVertical="40" name="graph-container">
+            <g ion-v1-row [fixedHeight]="70" [background]="rowColor" paddingInner="0.09" paddingTop="40" (handleClick)="handleClick($event)">
+              <g ion-v1-section flex="1" paddingHorizontal="15" name="data-legend-column">
+                <g ion-v1-rowlegend paddingInner="0.75" paddingLeft="12" (handleClick)="handleClick($event)">
+                  <g ion-v1-hint placement="bottom" [maxWidth]="300"></g>
+                </g>
+              </g>
+              <g #chartsection ion-v1-section flex="3" name="data-chart-column">
+                <g ion-v1-column titleDy="28" [columnArray]="columnArray">
+                  <g ion-v1-grid axis="x" [stroke]="gridColor" name="scale-grids" />
+                  <g ion-v1-bar [scalefactor]="scalefactor" [barHeight]="8" paddingOuter="1" paddingInner="0.72" [colors]="graphColors" (handleClick)="handleClick($event)"
+                  />
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div> -->
+
+    <div *ionViewResolved>
+      <div *ngIf="innovationType.data && innovationType.data.length > 0">
+        <div ion-responsive class="innovationtype">
+          <ion-xyplot [paddingTop]="innovationTypeConfig.paddingTop" responsive>
+            <ion-row [fixedRowHeight]="innovationTypeConfig.fixedRowHeight" (clickEvent)="handleClick($event)">
+              <ng-container *ngFor="let data of innovationType.data; let index = index;">
+                <ion-section [sectionData]="data" [disabled]="data.isClickable">
+                  <ion-section [border]="innovationTypeConfig.borderRight" [flex]="0.7">
+                    <ion-row-text ion-hint placement="bottom" [maxWidth]="innovationTypeConfig.toolTipWidth" [content]="data.title" [extra]="[data.subtitle]"
+                      [textOpacity]="!(data.value.length>0)" [legendTooltip]="data.legendTooltip" [wrapLegendWithHint]="data.wrapLegendWithHint"
+                      textWraptype="twoLine"></ion-row-text>
+                  </ion-section>
+                  <ion-section [flex]="2">
+                    <ng-container *ngFor="let val of data.value; let innerIndex = index;">
+                      <ion-section [border]="innovationTypeConfig.borderRight" [firstLine]="columnArray[innerIndex].name" [shortTitle]="columnArray[innerIndex].shortName"
+                        [headerPaddingBetween]="innovationTypeConfig.headerPaddingBetween" [headerPaddingDown]="innovationTypeConfig.headerPaddingDown"
+                        textWraptype="twoLine">
+                        <ion-bar [colors]="[graphColors[innerIndex]]" [value]="val" [display]="data.display[innerIndex]" [fixedbarHeight]="innovationTypeConfig.fixedbarHeight"
+                          [textRightPadding]="innovationTypeConfig.textRightPadding"></ion-bar>
+                        <ion-xyaxes [stroke]="xaxisStroke"></ion-xyaxes>
+                      </ion-section>
+                    </ng-container>
+                  </ion-section>
+                </ion-section>
+              </ng-container>
+            </ion-row>
+          </ion-xyplot>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

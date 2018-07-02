@@ -1,0 +1,41 @@
+@import "~ion-ui-components/src/styles/colors";
+@import "../../../styles/variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+
+.section {
+  .section-header {
+
+    // Media Queries
+    @include media-breakpoint-between(xs,md) { 
+      display: block;
+    }
+    display: inline-flex;
+    align-items: flex-start;
+
+    span {
+      font-weight: $font-weight-default;
+      font-size: $font-size-small;
+      color: $nielsen-gray-500;
+    }
+  }
+}
+
+@include media-breakpoint-between(xs,md){
+  .label {
+    margin-bottom: map-get($map: $spacers, $key: 4);
+  }
+}
+
+label{
+  font-weight: $font-weight-bold;
+  color: $nielsen-gray-900;
+  display: inline-block;
+}
+
+ion-multi-select{
+  width: 100%;
+}
+.spinner-container {
+  position: fixed;
+  top: 42%;
+}

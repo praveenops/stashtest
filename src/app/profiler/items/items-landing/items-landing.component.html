@@ -1,0 +1,40 @@
+<div class="row full-height">
+  <div class="col-12 p-0 panel-container">
+    <div class="nav-option">
+      <div class="close-div" (click)="close()">
+          <nd-icon class="mt-1 mr-2 c-pointer" icon="nlsn:close" [ngClass]="{'hide-nav': slideLeft}">
+          </nd-icon>
+      </div>
+
+      <nd-button class="hide m-0 mt-1" flat (click)="back()" [ngClass]="{'show-nav': slideLeft}">
+        Back
+      </nd-button>
+    </div>
+
+    <div class="panel items mt-6 px-lg-4" [ngClass]="{'slide-left items-collapsed': slideLeft}">
+      <div [ionViewSwitch]="dataState">
+        <div *ionViewResolving class="spinner-container">
+          <nd-spinner-lite active></nd-spinner-lite>
+        </div>
+        <ion-error [errorCode]="errorCode" *ionViewError class="mt-4" action="Refresh" (onAction)="refreshContext()"></ion-error>
+        <div *ionViewEmpty>
+          <div class="panel mt-6 px-lg-4 mt-lg-5">
+            <ion-help-message [primaryMessage]="noResultMessage"></ion-help-message>
+            <p class="m-0 text-center">
+              Select the &quot;
+              <nd-icon icon="nlsn:edit_fill"></nd-icon> &quot; icon and try again
+            </p>
+          </div>
+        </div>
+        <div *ionViewResolved>
+          <ion-item-list *ngIf="items.length" [items]="items" [factType]="factType" [currency]="currency" [selectedItem]="selectedItem" (selectedItemChange)="showItemDetails($event)"></ion-item-list>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel item-details mt-6 pl-lg-4"
+         [ngClass]="{'slide-left': slideLeft}">
+      <ion-item-details *ngIf="selectedItem" [item]="selectedItem" [contextId]="contextId"></ion-item-details>
+    </div>
+  </div>
+</div>

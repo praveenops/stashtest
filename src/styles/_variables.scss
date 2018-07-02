@@ -1,0 +1,34 @@
+/* Override bootstrap variables */
+
+@import "~ion-ui-components/src/styles/colors";
+@import "~ion-ui-components/src/styles/utils";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+$body-bg : $white;
+
+//Typography
+$font-family-sans-serif: "Open Sans", "Helvetica Neue", "Arial", "Arial Unicode MS", sans-serif;
+$font-size-xsmall: 11px;
+$font-size-small: 12px;
+$font-size-default: 13px;
+$font-size-medium: 15px;
+$font-size-large: 20px;
+
+$font-weight-default: 600;
+/* To use font-weight 400 use $font-weight-normal and for 700 use $font-weight-bold */
+
+// overriding bootstrap spacing class
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: ($spacer * .75),
+  4: $spacer,
+  5: ($spacer * 1.5),
+  6: ($spacer * 2),
+  7: ($spacer * 2.5),
+  8: ($spacer * 3),
+  9: ($spacer * 4)
+
+);

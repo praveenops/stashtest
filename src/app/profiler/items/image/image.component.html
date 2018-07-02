@@ -1,0 +1,3 @@
+<div class="image" [ngClass]="{'pointer-event-none': src == defaultImage}">
+  <img [src]="src !== defaultImage ? (src | publicImage) : src" (error)="src = defaultImage">
+</div>

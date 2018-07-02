@@ -1,0 +1,6 @@
+export const FEATURE = {
+  APP: 'APP',
+  DASHBOARD: 'DASHBOARD',
+  PROFILER: 'PROFILER',
+  ALERTS: 'ALERTS',
+};

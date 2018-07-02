@@ -1,0 +1,76 @@
+<div class="container-fluid">
+
+    <div [ionViewSwitch]="dataState">
+
+        <div *ionViewResolving class="spinner-container">
+            <nd-spinner-lite active></nd-spinner-lite>
+        </div>
+        <ion-error *ionViewError [errorCode]="errorCode" action="Refresh" (onAction)="refreshContext()"></ion-error>
+        <div *ionViewResolved>
+            <!-- TO DO: Remove the commented code once everything is confirmed -->
+            <!-- <div *ngIf="marketShareActivityIntensity.data && marketShareActivityIntensity.data.length">
+                <div ion-v1-responsive class="activity-intensity">
+                    <svg ion-v1-xyplot [dataset]="marketShareActivityIntensity.data" key="chipIndex" paddingVertical="40" name="graph-container">
+                        <g ion-v1-row [fixedHeight]="70" [background]="rowColor" paddingInner="0.09" paddingTop="40" (handleClick)="rowHandleClick($event)">
+                            <g ion-v1-section flex="1" paddingHorizontal="15" name="data-legend-column">
+                                <g ion-v1-rowlegend paddingLeft="12" paddingInner="0.75" (handleClick)="rowHandleClick($event)">
+                                    <g ion-v1-hint placement="bottom" [maxWidth]="300"></g>
+                                </g>
+                            </g>
+
+                            <g #chartsection ion-v1-section flex="3" name="data-chart-column">
+                                <g ion-v1-column titleDy="28" [columnArray]="columnArray" [showBarInMobile]="false">
+                                    <g ion-v1-grid axis="x" [stroke]="gridColor" name="scale-grids" />
+                                    <g ion-v1-bar [scalefactor]="scalefactor" barHeight="8" paddingOuter="0.5" paddingInner="0.72" [colors]="chartColors" (handleClick)="rowHandleClick($event)"
+                                    />
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="legends my-5">
+                    <ion-legend [title]="legendTitles[i]" [outline]="false" [color]="color" class="mr-4" *ngFor="let color of chartColors[2]; let i = index">
+                    </ion-legend>
+                </div>
+            </div> -->
+
+            <div *ngIf="marketShareActivityIntensity.data && marketShareActivityIntensity.data.length">
+                <div ion-responsive class="activity-intensity">
+                    <ion-xyplot [padding]="padding" [paddingTop]="activityIntensityConfig.paddingTop" responsive>
+                        <ion-row [fixedRowHeight]="activityIntensityConfig.fixedRowHeight" (clickEvent)="rowHandleClick($event)">
+                            <ng-container *ngFor="let data of marketShareActivityIntensity.data; let index = index;">
+                                <ion-section [sectionData]="data" [disabled]="data.isClickable">
+                                    <ion-section [border]="activityIntensityConfig.borderRight" [flex]="activityIntensityConfig.flex.titles">
+                                        <ion-row-text ion-hint placement="bottom" [maxWidth]="activityIntensityConfig.toolTipWidth" [content]="data.title" [extra]="[data.subtitle]"
+                                            textWraptype="twoLine" [textOpacity]="!(data.value.length>0)" [legendTooltip]="data.legendTooltip"
+                                            [wrapLegendWithHint]="data.wrapLegendWithHint"></ion-row-text>
+                                    </ion-section>
+                                    <ion-section [border]="activityIntensityConfig.borderRight" [flex]="activityIntensityConfig.flex.totalItems" [firstLine]="columnArray[0].name"
+                                        [headerPaddingDown]="activityIntensityConfig.headerPaddingDown" textWraptype="twoLine">
+                                        <ion-row-text [content]="data.display[0][0]" textAlign="right" [paddingHorizontal]="activityIntensityConfig.paddingHorizontal"
+                                            [titleFont]="activityIntensityConfig.titleFont" [millionFormat]="true"></ion-row-text>
+                                    </ion-section>
+                                    <ion-section [border]="activityIntensityConfig.borderRight" [flex]="activityIntensityConfig.flex.innovationItems" [firstLine]="columnArray[1].name"
+                                        [headerPaddingDown]="activityIntensityConfig.headerPaddingDown" textWraptype="twoLine">
+                                        <ion-row-text [content]="data.display[1][0]" textAlign="right" [paddingHorizontal]="activityIntensityConfig.paddingHorizontal"
+                                            [titleFont]="activityIntensityConfig.titleFont" [millionFormat]="true"></ion-row-text>
+                                    </ion-section>
+                                    <ion-section [flex]="activityIntensityConfig.flex.shareOfItemsCount" [firstLine]="columnArray[2].name" [headerPaddingDown]="activityIntensityConfig.headerPaddingDown"
+                                        textWraptype="twoLine">
+                                        <ion-bar [colors]="activityIntensityConfig.chartColors" [fixedbarHeight]="activityIntensityConfig.fixedbarHeight" [value]="data.value[2]"
+                                            [display]="data.display[2]" [textRightPadding]="activityIntensityConfig.textRightPadding"></ion-bar>
+                                        <ion-xyaxes [tickValues]="activityIntensityConfig.tickValues" [stroke]="activityIntensityConfig.xaxisStroke"></ion-xyaxes>
+                                    </ion-section>
+                                </ion-section>
+                            </ng-container>
+                        </ion-row>
+                    </ion-xyplot>
+                </div>
+                <div class="legends my-5">
+                    <ion-legend [title]="legendTitles[i]" [outline]="false" [color]="color" class="mr-4" *ngFor="let color of chartColors[2]; let i = index">
+                    </ion-legend>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

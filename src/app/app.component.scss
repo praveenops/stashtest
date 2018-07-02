@@ -1,0 +1,22 @@
+.light-container {
+
+  // note: brandbar doesn't provide calculated height
+  height: calc(100% - 50px);
+  position: relative;
+  top: 3rem;
+}
+iron-overlay-backdrop {
+
+  // because nd-toolbar is having z-index of 1000 in brand-bar
+  z-index: 1000;
+}
+.timeout-popup-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.timeout-popup {
+  min-width: 300px;
+  z-index: 1001;
+}

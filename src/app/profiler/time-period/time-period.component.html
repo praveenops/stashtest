@@ -1,0 +1,19 @@
+<div>
+
+  <!--selected="{{defaultTimePeriod.name}}"-->
+
+  <nd-dropdown-menu justify-width noink no-animations class="time-period-dropdown">
+    <nd-listbox class="time-period-list" slot="dropdown-content"
+                attr-for-selected="value" [selected]="defaultTimePeriod.id" (iron-select)="onChange($event)">
+
+      <nd-label *ngIf="timePeriodData.years" class="time-period-label px-4 py-3">Year</nd-label>
+      <nd-item *ngFor="let year of timePeriodData.years" class="px-6 py-3" [value]="year.id">{{year.name}}</nd-item>
+
+      <nd-label *ngIf="timePeriodData.quarters" class="time-period-label  px-4 py-3">Quarter</nd-label>
+      <nd-item *ngFor="let quarter of timePeriodData.quarters" class="px-6 py-3" [value]="quarter.id">{{quarter.name}}</nd-item>
+      <nd-label *ngIf="timePeriodData.groups" class="time-period-label  px-4 py-3">Period group</nd-label>
+      <nd-item *ngFor="let group of timePeriodData.groups" class="px-6 py-3" [value]="group.id">{{group.name}}</nd-item>
+
+    </nd-listbox>
+  </nd-dropdown-menu>
+</div>

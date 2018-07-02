@@ -1,0 +1,91 @@
+<div [ionViewSwitch]="dataState">
+  <div *ionViewResolving class="spinner-container">
+    <nd-spinner-lite active></nd-spinner-lite>
+  </div>
+
+  <ion-error *ionViewError [errorCode]="errorCode"></ion-error>
+
+  <div *ionViewResolved class="row mt-4">
+    <div class="col-md-6">
+      <div class="section mb-6">
+        <div class="section-header">
+          <div class="overlay-title mb-lg-3 mt-0"> Chart Data </div>
+          <div class="label ml-lg-2 mt-lg-2">Choose what you see on the charts.</div>
+        </div>
+        <div class="section-content">
+          <div *ngIf="manufacturerBrandsMap" id="manufacturer">
+            <label class="mb-1" data-attr="manuLabel">For Manufacturers & Brands</label>
+            <ion-flat-paginated-multi-select [autoSelect]="true" [itemsMap]="manufacturerBrandsMap" [groups]="groups" [selected]="selectedManufacturers"
+              [includeGroupTag]="true" [displaySize]="50" [openInCollapsedMode]="true" (selectedChange)="onSelection('manufacturers', $event)">
+            </ion-flat-paginated-multi-select>
+          </div>
+          <div *ngIf="datasetMetadata.factTypes" id="factType">
+            <label class="mb-1 mt-4">With Sales</label>
+            <nd-dropdown-menu justify-width noink no-animations>
+              <nd-listbox slot="dropdown-content" #factType attr-for-selected="value" [selected]="projectInfo.factType.id" (iron-select)="onSelection('factType', $event)">
+                <nd-item *ngFor="let factType of datasetMetadata.factTypes" [value]="factType.id">{{factType.name}} (millions)</nd-item>
+              </nd-listbox>
+            </nd-dropdown-menu>
+          </div>
+        </div>
+      </div>
+      <div class="section mb-6">
+        <div class="section-header">
+          <div class="overlay-title mb-lg-3 mt-0"> Scope </div>
+          <div class="label ml-lg-2 mt-lg-2">Define what the data should cover.</div>
+        </div>
+        <div class="section-content">
+          <div *ngIf="categories" id="category">
+            <label class="mb-1">For Category / Segment</label>
+            <ion-multi-select [autoSelect]="true" [items]="categories" [selected]="selectedCategories" (selectedChange)="onSelection('category', $event)"
+              [useFlatData]="true">
+            </ion-multi-select>
+          </div>
+          <div *ngIf="timePeriods" id="timePeriods">
+            <label class="mb-1 mt-4">Time period</label>
+            <ion-time-period [defaultTimePeriod]="projectInfo.timePeriod" [timePeriodData]="timePeriods" (timePeriodChange)="onSelection('timePeriod', $event)"></ion-time-period>
+          </div>
+        </div>
+      </div>
+
+      <div class="section mb-6">
+        <div class="section-header">
+          <div class="overlay-title mb-lg-3 mt-0"> Innovation Definition </div>
+          <div class="label ml-lg-2 mt-lg-2">Define what you consider as an innovation.</div>
+        </div>
+        <div class="section-content">
+          <div *ngIf="datasetMetadata.innovationPeriods" id="innovationPeriods">
+            <label class="mb-1">Consider Innovation for</label>
+            <nd-dropdown-menu justify-width noink no-animations class="time-period-dropdown">
+              <nd-listbox class="time-period-list" slot="dropdown-content" attr-for-selected="value" [selected]="projectInfo.innovationPeriod.id"
+                (iron-select)="onSelection('innovationPeriod', $event)">
+                <nd-item *ngFor="let period of datasetMetadata.innovationPeriods" [value]="period.id">{{period.name}}</nd-item>
+              </nd-listbox>
+            </nd-dropdown-menu>
+          </div>
+
+          <div *ngIf="datasetMetadata.innovationThresholds" id="innovationThresholds">
+            <label class="mb-1">From Reaching</label>
+            <nd-dropdown-menu justify-width noink no-animations>
+              <nd-listbox slot="dropdown-content" attr-for-selected="value" [selected]="projectInfo.innovationThreshold.id" (iron-select)="onSelection('innovationThresholds', $event)">
+                <nd-item *ngFor="let acv of datasetMetadata.innovationThresholds" [value]="acv.id">{{acv.name}}</nd-item>
+              </nd-listbox>
+            </nd-dropdown-menu>
+          </div>
+
+          <div *ngIf="innovationTypes" id="innovationTypes">
+            <label class="mb-1">Innovation types</label>
+            <ion-multi-select [autoSelect]="true" [items]="innovationTypes.allValues" [selected]="innovationTypes.selected" (selectedChange)="onSelection('innovationTypes', $event)"
+              [useFlatData]="true">
+            </ion-multi-select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          &nbsp;
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

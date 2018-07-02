@@ -1,0 +1,25 @@
+@import "../../../../styles/variables";
+
+ion-help-message{
+  position: relative;
+}
+.spinner-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; 
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+ion-help-message{
+  top: 25%;  
+}
+nd-spinner-lite{
+  position: relative;
+  top: 28%;
+}

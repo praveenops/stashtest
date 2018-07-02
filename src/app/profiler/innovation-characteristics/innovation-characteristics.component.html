@@ -1,0 +1,75 @@
+<div class="innovation-details">
+  <div [ionViewSwitch]="dataState">
+    <div *ionViewResolving class="spinner-container">
+      <nd-spinner-lite active></nd-spinner-lite>
+    </div>
+    <ion-error *ionViewError [errorCode]="errorCode" action="Refresh" (onAction)="refreshContext()"></ion-error>
+    <div *ionViewEmpty>
+      <div class="panel-container pt-4">
+        <div class="panel mt-6 px-lg-4 mt-lg-5">
+          <ion-help-message [primaryMessage]="noResultMessage"></ion-help-message>
+          <p class="m-0 text-center">
+            Select the &quot;
+            <nd-icon icon="nlsn:edit_fill"></nd-icon> &quot; icon and try again
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- <div *ionViewResolved>
+      <h4 class="overlay-title">Top 10 Innovation Characteristics</h4>
+      <div *ngIf="innovationCharacteristics.data && innovationCharacteristics.data.length > 0">
+        <div ion-v1-responsive class="innovationCharacteristics">
+          <svg ion-v1-xyplot [dataset]="innovationCharacteristics.data" key="chipIndex" paddingVertical="50" name="graph-container">
+            <g ion-v1-row [fixedHeight]="70" [background]="rowColor" paddingInner="0.15" paddingTop="50" (handleClick)="rowHandleClick($event)"
+              [topRowColor]="false">
+              <g ion-v1-section flex="2" paddingHorizontal="15" name="data-legend-column">
+                <g ion-v1-rowlegend paddingInner="0.75" paddingLeft="12" (handleClick)="rowHandleClick($event)">
+                  <g ion-v1-hint placement="top" textAlign="left" [maxWidth]="300"></g>
+                </g>
+              </g>
+              <g #chartsection ion-v1-section flex="5" name="data-chart-column">
+                <g ion-v1-column titleDy="28" [columnArray]="columnArray" [specialSubTitle]="true" [lineHeight]="9" [titleDy]="34">
+                  <g ion-v1-grid axis="x" [stroke]="gridColor" name="scale-grids" />
+                  <g ion-v1-bar [scalefactor]="scalefactor" [barHeight]="8" paddingOuter="1" paddingInner="0.72" [colors]="graphColors" (handleClick)="rowHandleClick($event)"
+                  />
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div> -->
+    <div *ionViewResolved>
+      <h4 class="overlay-title">Top 10 Innovation Characteristics</h4>
+      <div *ngIf="innovationCharacteristics.data && innovationCharacteristics.data.length > 0">
+        <div ion-responsive class="innovationCharacteristics">
+          <ion-xyplot [paddingTop]="innovationCharacteristicsConfig.paddingTop" responsive>
+            <ion-row [fixedRowHeight]="innovationCharacteristicsConfig.fixedRowHeight" [colors]="innovationCharacteristicsConfig.rowColors"
+              (clickEvent)="rowHandleClick($event)">
+              <ng-container *ngFor="let data of innovationCharacteristics.data; let index = index;">
+                <ion-section [sectionData]="data" [disabled]="data.isClickable">
+                  <ion-section [border]="innovationCharacteristicsConfig.borderRight" [flex]="0.7">
+                    <ion-row-text ion-hint placement="bottom" [maxWidth]="innovationCharacteristicsConfig.toolTipWidth" [content]="data.title"
+                      [extra]="[data.subtitle]" textWraptype="twoLine" [textOpacity]="!(data.value.length>0)" [legendTooltip]="data.legendTooltip"
+                      [wrapLegendWithHint]="data.wrapLegendWithHint"></ion-row-text>
+                  </ion-section>
+                  <ion-section [flex]="2">
+                    <ng-container *ngFor="let val of data.value; let innerIndex = index;">
+                      <ion-section [border]="innovationCharacteristicsConfig.borderRight" [firstLine]="columnArray[innerIndex].name+' '+columnArray[innerIndex].subtitle"
+                        [headerPaddingBetween]="innovationCharacteristicsConfig.headerPaddingBetween" [headerPaddingDown]="innovationCharacteristicsConfig.headerPaddingDown"
+                        textWraptype="twoLine">
+                        <ion-bar [colors]="[graphColors[innerIndex]]" [value]="val" [display]="data.display[innerIndex]" [fixedbarHeight]="innovationCharacteristicsConfig.fixedbarHeight"
+                          [textRightPadding]="innovationCharacteristicsConfig.textRightPadding"></ion-bar>
+                        <ion-xyaxes [stroke]="xaxisStroke"></ion-xyaxes>
+                      </ion-section>
+                    </ng-container>
+                  </ion-section>
+                </ion-section>
+              </ng-container>
+            </ion-row>
+          </ion-xyplot>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

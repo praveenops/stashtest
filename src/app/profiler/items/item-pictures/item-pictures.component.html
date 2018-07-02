@@ -1,0 +1,27 @@
+<div [ionViewSwitch]="dataState">
+  <div *ionViewResolving class="spinner-container">
+    <nd-spinner-lite active></nd-spinner-lite>
+  </div>
+  <div *ionViewEmpty>
+    <ion-error [errorMessage]="picturesEmptyMessage"></ion-error>
+  </div>
+  <ion-error *ionViewError [errorCode]="errorCode"></ion-error>
+  <div *ionViewResolved>
+    <div class="pictures-container" *ngIf="itemPictures.length">
+      <ng-container *ngFor="let picture of itemPictures; let idx = index;">
+
+        <div class="image-container mb-3" *ngIf="(showAllImages || itemPictures.length === 4 || idx < 3)">
+          <ion-image [src]="picture.img_Thumbnail_URL" (click)="carousel.open(idx)"></ion-image>
+        </div>
+
+      </ng-container>
+
+      <div class="image c-pointer" *ngIf="!showAllImages && itemPictures.length > 4" (click)="showAllImages = true">
+        + {{itemPictures.length - 3}}
+      </div>
+    </div>
+  
+  </div>
+</div>
+
+<ion-carousel [imgUrls]="carouselImages" [defaultImage]="defaultImage" #carousel></ion-carousel>

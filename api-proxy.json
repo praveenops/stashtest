@@ -1,0 +1,7 @@
+{
+  "/ion": {
+    "target": "http://ion-gateway-qa.ase-nonprod.enterprisenet.org",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

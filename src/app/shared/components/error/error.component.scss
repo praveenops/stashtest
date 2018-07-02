@@ -1,0 +1,12 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/breakpoints";
+
+nd-toast{
+  z-index: 103;
+  display: flex !important;
+  opacity: 1;
+  margin-left: map-get($map: $spacers, $key: 4);
+  margin-right: map-get($map: $spacers, $key: 4);
+  margin-top: map-get($map: $spacers, $key: 2);
+}
+

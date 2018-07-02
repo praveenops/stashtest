@@ -1,0 +1,98 @@
+@import "../../../../styles/variables";
+.overlay-title {
+  font-size: $font-size-large;
+  font-weight: $font-weight-default;
+  color: $nielsen-gray-800;
+}
+
+.category-text {
+  font-size: $font-size-small;
+  color: $nielsen-gray-500;
+  font-weight: $font-weight-normal;
+}
+
+.item-heading {
+  font-weight: $font-weight-bold;
+  font-size: $font-size-default;
+  color: $nielsen-gray-900;
+}
+.item-value{
+  font-weight: $font-weight-normal;
+  font-size: $font-size-default;
+  color: $nielsen-gray-900;
+}
+.subtype-chars {
+  width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 2px 2px $nielsen-gray-400;
+  border-top: 6px solid $nielsen-red-300;
+
+  .item-heading {
+    color: $nielsen-gray-600;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-default;
+  }
+
+  .item-value {
+    color: $nielsen-gray-600;
+    font-weight: $font-weight-normal;
+    font-size: $font-size-default;
+  }
+}
+
+.chars-container {
+  font-size: $font-size-medium;
+  color: $nielsen-blue-500;
+  font-weight: $font-weight-default;
+
+}
+.chars-container :hover{
+  color: $nielsen-blue-700
+}
+.chip {
+  border-radius: 20px;
+  height: 16px;
+  line-height: .7;
+  display: inline-block;
+  font-size: $font-size-xsmall;
+  font-weight: $font-weight-default;
+  color: $white;
+}
+.primary {
+  background-color: $nielsen-red-500;
+}
+.secondary {
+  background-color: $nielsen-gray-500;
+}
+.item-characteristics-header{
+  display: flex;
+
+  div{
+    margin-right: map-get($map: $spacers, $key: 1);
+  }
+}
+.item-category{
+  .item-heading{
+    font-weight: $font-weight-default;
+    font-size: $font-size-small;
+    color: $nielsen-gray-500;
+  }
+  .item-value{
+    font-weight: $font-weight-normal;
+    font-size: $font-size-default;
+    color: $nielsen-gray-900;
+  }
+  div:last-child{
+    margin-bottom: map-get($map: $spacers, $key: 5);
+  }
+}
+
+.domain-name{
+  font-weight: $font-weight-bold;
+  color: $nielsen-gray-900;
+}
+.spinner-container{
+  position: absolute;
+  top: 40%;
+}
+

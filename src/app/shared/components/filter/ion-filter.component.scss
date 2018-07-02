@@ -1,0 +1,77 @@
+@import "../../../../styles/breakpoints";
+@import "../../../../styles/tables";
+.filter {
+  min-width: 200px;
+  max-width: 450px;
+  border: 1px solid $nielsen-gray-300;
+  z-index: 1;
+  position: absolute;
+  overflow-x: hidden;
+  background-color: $white;
+  text-align: left;
+  .items {
+    min-height: 50px;
+    max-height: 250px;
+    overflow-y: auto;
+    display: flex;
+
+    .items-container {
+      flex-grow: 1;
+    }
+    .item {
+      &.checked {
+        background: $nielsen-gray-200;
+      }
+      &:hover {
+        background: $nielsen-blue-50;
+      }
+     
+    }
+  }
+}
+@include media-breakpoint-between(xs, md){
+  .filter{
+    max-width: 250px;
+  }
+  .right-align .filter{
+    right: 0;
+  }
+}
+.item-name {
+  &.full {
+    display: block;
+  }
+  &.short {
+    display: none;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .item-name {
+    &.full {
+      display: none;
+    }
+    &.short {
+      display: block;
+    }
+  }
+}
+.search-input {
+  flex-grow: 1;
+  display: block;
+  background: inherit;
+  resize: none;
+  border: none;
+  border-bottom: 1px solid $nielsen-gray-300;
+  width: 100%;
+  line-height: map-get($map: $spacers, $key: 6);
+  outline: none;
+  font-size: 14px;
+  margin: 5px 0;
+
+}
+
+.header {
+  border-bottom: 1px solid $nielsen-gray-300;
+}
+

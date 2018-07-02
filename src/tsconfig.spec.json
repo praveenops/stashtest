@@ -1,0 +1,24 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/spec",
+    "baseUrl": "./",
+    "module": "commonjs",
+    "target": "es5",
+    "types": [
+      "jasmine",
+      "node"
+    ]
+  },
+  "files": [
+    "test.ts",
+    "polyfills.ts"
+  ],
+  "include":[
+    "../src/**/*.ts",
+    "../node_modules/ion-ui-components/src/app/ion-ui-components/**/*.ts",
+    "../node_modules/ion-ui-components/src/app/ion-data-visualizations/**/*.ts",
+    "../node_modules/ion-ui-components/src/app/ion-viz/**/*.ts",
+    "../node_modules/ion-ui-components/index.ts"
+  ]
+}

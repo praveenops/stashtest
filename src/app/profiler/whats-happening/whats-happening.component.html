@@ -1,0 +1,8 @@
+<div class="container-fluid scroll-container">
+  <nd-tabs class="my-4 px-4" wrap selected="{{selectedTab}}" tertiary *ngIf="toggleTabs">
+    <nd-tab routerLink="innovation-contribution" routerLinkActive="active">Innovation Contribution to Sales</nd-tab>
+    <nd-tab routerLink="market-share" routerLinkActive="active">Market Share vs Innovation Share</nd-tab>
+  </nd-tabs>
+
+  <router-outlet></router-outlet>
+</div>

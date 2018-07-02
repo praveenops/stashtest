@@ -1,0 +1,38 @@
+{
+    "defaultSeverity": "warning",
+    "plugins": [
+    "stylelint-scss"
+    ],
+    "rules": {
+        "block-no-empty": null,
+        "unit-whitelist": ["rem", "s", "px", "%", "vh"],
+        "color-no-invalid-hex": true,
+        "declaration-colon-space-after": "always",
+        "declaration-colon-space-before": "never",
+        "function-comma-space-after": "always",
+        "media-feature-colon-space-after": "always",
+        "media-feature-colon-space-before": "never",
+        "media-feature-name-no-vendor-prefix": true,
+        "max-empty-lines": 1,
+        "number-leading-zero": "never",
+        "number-no-trailing-zeros": true,
+        "property-no-vendor-prefix": true,
+        "selector-list-comma-space-before": "never",
+        "selector-list-comma-space-after": "always",
+        "string-quotes": "double",
+        "value-no-vendor-prefix": true,
+        "at-rule-blacklist": ["debug"],
+        "indentation": 2,
+        "scss/at-extend-no-missing-placeholder": true,
+        "scss/dollar-variable-pattern": "^[a-z-]*",
+        "scss/selector-no-redundant-nesting-selector": true,
+        "scss/double-slash-comment-empty-line-before":"always",
+        "scss/declaration-nested-properties":"never",
+        "scss/declaration-nested-properties-no-divided-groups":true,
+        "scss/media-feature-value-dollar-variable":"always",
+        "scss/operator-no-newline-after":true,
+        "scss/operator-no-newline-before":true,
+        "scss/operator-no-unspaced":true,
+        "scss/at-import-partial-extension-whitelist":["scss","/less/"]
+       }
+}

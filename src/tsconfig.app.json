@@ -1,0 +1,22 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./",
+    "module": "es2015",
+    "types": []
+  },
+  "include": [
+    "../src/**/*.ts",
+    "../node_modules/ion-ui-components/src/app/components/**/*.ts",
+    "../node_modules/ion-ui-components/src/app/v1-visualizations/**/*.ts",
+    "../node_modules/ion-ui-components/src/app/visualizations/**/*.ts",
+    "../node_modules/ion-ui-components/index.ts"
+  ],
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts",
+    "../node_modules/ion-ui-components/**/*.spec.ts",
+    "../node_modules/ion-ui-components/node_modules/**/*"
+  ]
+}
